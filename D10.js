@@ -309,35 +309,95 @@ const searchAndDivide = (array, text) => {
   Scrivi una funzione chiamata "removeIndex" che riceve un numero come parametro e ritorna l'array "movies" fornito privo dell'elemento nella posizione ricevuta come parametro.
 */
 
+const removeIndex = (array, index) => {
+  array.splice(index, 1);
+  return array;
+};
+
 // DOM (nota: gli elementi che selezionerai non si trovano realmente nella pagina)
+console.log("-/*-/*-/*-/* DOM -/*-/*-/*-/*");
 
 /* ESERCIZIO 20
   Scrivi una funzione per selezionare l'elemento dotato di id "container" all'interno della pagina.
 */
+console.log("-------- ESERCIZIO 20 --------");
 
+const selID = (string) => {
+  return document.getElementById(string);
+};
+console.log(selID("container"));
 /* ESERCIZIO 21
   Scrivi una funzione per selezionare ogni tag <td> all'interno della pagina.
 */
+console.log("-------- ESERCIZIO 21 --------");
+
+const selTds = () => {
+  return document.getElementsByTagName("td");
+};
+console.log(selTds());
 
 /* ESERCIZIO 22
   Scrivi una funzione che, tramite un ciclo, stampa in console il testo contenuto in ogni tag <td> all'interno della pagina.
 */
+console.log("-------- ESERCIZIO 22 --------");
+const whatsIn = (sel) => {
+  for (let i = 0; i < sel.length; i++) {
+    console.log(sel[i].innerText);
+  }
+};
+whatsIn(selTds());
 
 /* ESERCIZIO 23
   Scrivi una funzione per aggiungere un background di colore rosso a ogni link all'interno della pagina.
 */
+const aBgRed = () => {
+  console.log("-------- ESERCIZIO 23 --------");
+  const aElements = document.getElementsByTagName("a");
+  for (let a = 0; a < aElements.length; a++) {
+    aElements[a].style = "background-color: red";
+  }
+  console.log("Ho aggiunto il background ROSSO a tutti gli elmenti A");
+};
+aBgRed();
 
 /* ESERCIZIO 24
   Scrivi una funzione per aggiungere un nuovo elemento alla lista non ordinata con id "myList".
 */
+const newLine = (string) => {
+  console.log("-------- ESERCIZIO 24 --------");
+  const list = document.getElementById("myList");
+  const newLine = document.createElement("li");
+  newLine.innerHTML = string;
+  list.append(newLine);
+  console.log("Ho aggiunto una nuova riga a #myList");
+};
+newLine("Questa stringa l'ho aggiunta in JavaScript");
 
 /* ESERCIZIO 25
   Scrivi una funzione per svuotare la lista non ordinata con id "myList".
 */
 
+const removeAllLis = () => {
+  console.log("-------- ESERCIZIO 25 --------");
+  const ulElements = document.querySelector("#myList");
+  ulElements.innerHTML = "";
+  console.log("Ho rimosso tutti gli item della lista #myList");
+};
+removeAllLis();
+
 /* ESERCIZIO 26
   Scrivi una funzione per aggiungere ad ogni tag <tr> la classe CSS "test"
 */
+
+const trTest = () => {
+  console.log("-------- ESERCIZIO 26 --------");
+  const trElements = document.getElementsByTagName("tr");
+  for (let a = 0; a < trElements.length; a++) {
+    trElements[a].classList.add("test");
+  }
+  console.log("Ho aggiunto la classe TEST a tutti gli elmenti TR");
+};
+trTest();
 
 // [EXTRA] JS Avanzato
 
@@ -487,7 +547,7 @@ const movies = [
   },
 ];
 
-console.log("-------- ESERCIZIO 12 --------");
+/* console.log("-------- ESERCIZIO 12 --------");
 console.log(`Il film più nuovo è:`, newestMovie(movies));
 console.log("-------- ESERCIZIO 13 --------");
 console.log(`Ci sono:`, countMovies(movies), "film nell'array");
@@ -501,3 +561,6 @@ console.log("-------- ESERCIZIO 17 --------");
 console.log(searchByTitle(movies, "salem"));
 console.log("-------- ESERCIZIO 18 --------");
 console.log(searchAndDivide(movies, "lord"));
+console.log("-------- ESERCIZIO 19 --------");
+console.log(removeIndex(movies, 1));
+ */
