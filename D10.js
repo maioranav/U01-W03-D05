@@ -178,10 +178,41 @@ console.log(rollTheDices(3));
 /* ESERCIZIO 9
   Scrivi una funzione chiamata "howManyDays" che riceve una data come parametro e ritorna il numero di giorni trascorsi da tale data.
 */
+console.log("-------- ESERCIZIO 9 --------");
+const howManyDays = (data) => {
+  let today = new Date();
+  let dateTo = new Date(data);
+  let timeDiff = today.getTime() - dateTo.getTime();
+  return Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+};
+console.log("Sono passati", howManyDays("2021-12-14"), "giorni");
 
 /* ESERCIZIO 10
   Scrivi una funzione chiamata "isTodayMyBirthday" che deve ritornare true se oggi è il tuo compleanno, falso negli altri casi.
 */
+console.log("-------- ESERCIZIO 10 --------");
+
+const isTodayMyBirthday = (birthDate) => {
+  const today = new Date();
+  const todayObj = {
+    anno: today.getFullYear(),
+    mese: today.getMonth() + 1,
+    giorno: today.getDate(),
+  };
+  const birth = new Date(birthDate);
+  const birthObj = {
+    anno: birth.getFullYear(),
+    mese: birth.getMonth() + 1,
+    giorno: birth.getDate(),
+  };
+
+  if (todayObj.mese === birthObj.mese && todayObj.giorno === birthObj.giorno) {
+    return true;
+  } else {
+    return false;
+  }
+};
+console.log("E' il mio compleanno?", isTodayMyBirthday("2022-12-17"));
 
 // Arrays & Oggetti
 
@@ -191,35 +222,88 @@ console.log(rollTheDices(3));
   Scrivi una funzione chiamata "deleteProp" che riceve un oggetto e una stringa come parametri; deve ritornare l'oggetto fornito dopo aver eliminato
   in esso la proprietà chiamata come la stringa passata come secondo parametro.
 */
+console.log("-------- ESERCIZIO 11 --------");
+
+const oggetto11 = {
+  nome: "Vincenzo",
+  cognome: "Maiorana",
+  età: 29,
+  altezza: 183,
+};
+const deleteProp = (obj, str) => {
+  delete obj[str];
+  return obj;
+};
+console.log(deleteProp(oggetto11, "età"));
 
 /* ESERCIZIO 12
   Scrivi una funzione chiamata "newestMovie" che trova il film più recente nell'array "movies" fornito.
 */
 
+const newestMovie = (array) => {
+  let lastYearSet = 0;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].Year > lastYearSet) {
+      lastYearSet = array[i].Year;
+      newer = array[i];
+    }
+  }
+  return newer;
+};
+
 /* ESERCIZIO 13
   Scrivi una funzione chiamata countMovies che ritorna il numero di film contenuti nell'array "movies" fornito.
 */
+const countMovies = (array) => {
+  return array.filter((movie) => movie.Type === "movie").length;
+};
 
 /* ESERCIZIO 14
   Scrivi una funzione chiamata "onlyTheYears" che crea un array con solamente gli anni di uscita dei film contenuti nell'array "movies" fornito.
 */
+const onlyTheYears = (array) => {
+  return array.map((x) => x.Year);
+};
 
 /* ESERCIZIO 15
   Scrivi una funzione chiamata "onlyInLastMillennium" che ritorna solamente i film prodotto nel millennio scorso contenuti nell'array "movies" fornito.
 */
+const onlyInLastMillennium = (array) => {
+  return array.filter((x) => x.Year >= "2000");
+};
 
 /* ESERCIZIO 16
   Scrivi una funzione chiamata "sumAllTheYears" che ritorna la somma di tutti gli anni in cui sono stati prodotti i film contenuti nell'array "movies" fornito.
 */
+const sumAllTheYears = (array) => {
+  return array.map((x) => parseInt(x.Year)).reduce((a, y) => a + y);
+};
 
 /* ESERCIZIO 17
   Scrivi una funzione chiamata "searchByTitle" che riceve una stringa come parametro e ritorna i film nell'array "movies" fornito che la contengono nel titolo.
 */
+const searchByTitle = (array, text) => {
+  return array.filter(
+    (x) => x.Title.toLowerCase().search(text.toLowerCase()) > 0
+  );
+};
 
 /* ESERCIZIO 18
   Scrivi una funzione chiamata "searchAndDivide" che riceve una stringa come parametro e ritorna un oggetto contenente due array: "match" e "unmatch".
   "match" deve includere tutti i film dell'array "movies" fornito che contengono la stringa fornita all'interno del proprio titolo, mentre "unmatch" deve includere tutti i rimanenti.
 */
+
+const searchAndDivide = (array, text) => {
+  const queryResult = { match: [], unmatch: [] };
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].Title.toLowerCase().search(text.toLowerCase()) > 0) {
+      queryResult.match.push(array[i]);
+    } else {
+      queryResult.unmatch.push(array[i]);
+    }
+  }
+  return queryResult;
+};
 
 /* ESERCIZIO 19
   Scrivi una funzione chiamata "removeIndex" che riceve un numero come parametro e ritorna l'array "movies" fornito privo dell'elemento nella posizione ricevuta come parametro.
@@ -402,3 +486,18 @@ const movies = [
       "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",
   },
 ];
+
+console.log("-------- ESERCIZIO 12 --------");
+console.log(`Il film più nuovo è:`, newestMovie(movies));
+console.log("-------- ESERCIZIO 13 --------");
+console.log(`Ci sono:`, countMovies(movies), "film nell'array");
+console.log("-------- ESERCIZIO 14 --------");
+console.log(onlyTheYears(movies));
+console.log("-------- ESERCIZIO 15 --------");
+console.log(onlyInLastMillennium(movies));
+console.log("-------- ESERCIZIO 16 --------");
+console.log(sumAllTheYears(movies));
+console.log("-------- ESERCIZIO 17 --------");
+console.log(searchByTitle(movies, "salem"));
+console.log("-------- ESERCIZIO 18 --------");
+console.log(searchAndDivide(movies, "lord"));
