@@ -413,6 +413,21 @@ trTest();
 
 */
 
+console.log("-------- ESERCIZIO 27 --------");
+
+const halfTree = (h) => {
+  for (let i = 0; i <= h; i++) {
+    let star = "";
+
+    for (let j = 0; j <= i; j++) {
+      star += " *";
+    }
+    console.log(star);
+  }
+};
+
+halfTree(5);
+
 /* ESERCIZIO 28
   Crea una funzione chiamata "tree" che riceve un numero come parametro e costruisce un albero di "*" (asterischi) dell'altezza fornita.
 
@@ -425,9 +440,39 @@ trTest();
 
 */
 
+console.log("-------- ESERCIZIO 28 --------");
+
+const tree = (h) => {
+  for (let i = 0; i <= h; i++) {
+    let star = "";
+    for (let k = 1; k <= h - i; k++) {
+      star += " ";
+    }
+    for (let j = 0; j <= i; j++) {
+      star += " *";
+    }
+    console.log(star);
+  }
+};
+
+tree(5);
+
 /* ESERCIZIO 29
   Crea una funzione chiamata "isItPrime" che riceve un numero come parametro e ritorna true se il numero fornito è un numero primo.
 */
+console.log("-------- ESERCIZIO 29 --------");
+const isItPrime = (n) => {
+  if (n == 1 || n == 2) {
+    return true;
+  }
+  for (let i = 2; i < n; i++) {
+    if (n % i == 0) {
+      return false;
+    }
+  }
+  return true;
+};
+console.log("E' un numero primo?", isItPrime(7));
 
 /* Questo array viene usato per gli esercizi. Non modificarlo. */
 
@@ -547,7 +592,7 @@ const movies = [
   },
 ];
 
-/* console.log("-------- ESERCIZIO 12 --------");
+console.log("-------- ESERCIZIO 12 --------");
 console.log(`Il film più nuovo è:`, newestMovie(movies));
 console.log("-------- ESERCIZIO 13 --------");
 console.log(`Ci sono:`, countMovies(movies), "film nell'array");
@@ -563,4 +608,8 @@ console.log("-------- ESERCIZIO 18 --------");
 console.log(searchAndDivide(movies, "lord"));
 console.log("-------- ESERCIZIO 19 --------");
 console.log(removeIndex(movies, 1));
- */
+
+console.log(
+  "Nel file JS, gli elementi dell'array MOVIES vengono trattati alla fine"
+);
+console.log("Per gli esercizi dal 20 e successivi, scorri in alto");
